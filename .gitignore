@@ -1,2 +1,5 @@
 config.json
-./venv
+venv/
+uisp_config.json
+__pycache__/
+
