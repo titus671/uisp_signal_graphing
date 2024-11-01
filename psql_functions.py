@@ -62,6 +62,7 @@ class DB:
             signal_remote_60g
             )
                 VALUES (%s, %s, %s, %s, %s)
+                ON CONFLICT (time) DO NOTHING
         """
         self.cursor.execute(data_q, data)
     
