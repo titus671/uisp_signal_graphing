@@ -159,7 +159,7 @@ class RO_DB:
 
     def execute_query(self, query):
         self.cursor.execute(query)
-        return self.cursor.fetchone()
+        return self.cursor.fetchall()
 
     def __del__(self):
         self.cursor.close()

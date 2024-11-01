@@ -26,7 +26,8 @@ def main():
                                 """
 
     result = uisp_db.execute_query(query)
-    print(result)
+    for r in result:
+        print(r)
 
 
 if __name__ == "__main__":
