@@ -29,7 +29,7 @@ class DB:
             CREATE TABLE uisp_stats (
                 time TIMESTAMPTZ NOT NULL,
                 device_id UUID,
-                name VARCHAR(25),
+                name VARCHAR(80),
                 signal_local_60g INT,
                 signal_remote_60g INT
             );
@@ -65,6 +65,8 @@ class DB:
                 ON CONFLICT (time, device_id) DO NOTHING
         """
         self.cursor.execute(data_q, data)
+ix'
+[main 849880e] minor fix
     
     def __del__(self):
         self.conn.commit()

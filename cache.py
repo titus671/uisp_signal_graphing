@@ -22,7 +22,7 @@ def main():
                         ON d.device_id = ds.device_id 
                         AND ds.signal_local_60g IS NOT NULL 
                             JOIN site st ON d.site_id = st.id 
-                                AND st.type = 'site' limit 1;
+                                AND st.type = 'site';
                                 """
 
     result = uisp_db.execute_query(query)
