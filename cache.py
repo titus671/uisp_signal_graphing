@@ -8,13 +8,15 @@ def main():
     uisp_db = RO_DB(CONFIG("uisp_config.json"))
     cache_db = DB(CONFIG("config.json"))
 
+    cache_db.create_tables()
+
     query = """
             SELECT
                 ds.updated_at, 
-                d.device_id
+                d.device_id,
                 d.hostname, 
                 ds.signal_local_60g, 
-                ds.signal_remote_60g, 
+                ds.signal_remote_60g 
                     FROM device d 
                         JOIN device_statistics ds 
                         ON d.device_id = ds.device_id 
