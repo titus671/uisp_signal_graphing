@@ -65,8 +65,6 @@ class DB:
                 ON CONFLICT (time, device_id) DO NOTHING
         """
         self.cursor.execute(data_q, data)
-ix'
-[main 849880e] minor fix
     
     def __del__(self):
         self.conn.commit()
