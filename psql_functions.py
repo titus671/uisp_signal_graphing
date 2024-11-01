@@ -31,7 +31,7 @@ class DB:
                 device_id UUID,
                 name VARCHAR(25),
                 signal_local_60g INT,
-                signal_remote_60g INT,
+                signal_remote_60g INT
             );
             CREATE INDEX ON uisp_stats (device_id, time DESC);
             ALTER TABLE uisp_stats
