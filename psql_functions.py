@@ -7,9 +7,9 @@ from psycopg import sql
 import concurrent.futures, time
 
 class DB:
-    def __init__(self, config: CONFIG):
+    def __init__(self, config: CONFIG, args):
 
-        self.logger = Logger()
+        self.logger = Logger(args)
         try:
             self.conn = psycopg.connect(f"postgres://{config.db_username}:{config.db_password}@{config.db_host}:{config.db_port}/{config.db_name}")
             self.cursor = self.conn.cursor()
@@ -71,8 +71,8 @@ class DB:
         self.cursor.close()
 
 class RO_DB:
-    def __init__(self, config: CONFIG):
-        self.logger = Logger()
+    def __init__(self, config: CONFIG, args):
+        self.logger = Logger(args)
         try:
             self.conn = psycopg.connect(f"postgres://{config.db_username}:{config.db_password}@{config.db_host}:{config.db_port}/{config.db_name}")
             self.cursor = self.conn.cursor()
@@ -89,7 +89,7 @@ class RO_DB:
 
 
 def main():
-    db = DB(CONFIG("config.json"))
+    db = DB(CONFIG("config.json"), ...)
     db.create_tables()
 
 if __name__ == "__main__":

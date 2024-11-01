@@ -3,19 +3,19 @@ from psql_functions import DB, RO_DB
 from config import CONFIG
 import time, argparse
 
-def loop_main():
+def loop_main(args):
     while True:
         try:
-            main()
+            main(args)
             time.sleep(10)
         except Exception as e:
             import sys
             print(e)
             sys.exit(1)
 
-def main():
-    uisp_db = RO_DB(CONFIG("uisp_config.json"))
-    cache_db = DB(CONFIG("config.json"))
+def main(args):
+    uisp_db = RO_DB(CONFIG("uisp_config.json"), args)
+    cache_db = DB(CONFIG("config.json"), args)
 
     cache_db.create_tables()
 
@@ -41,12 +41,13 @@ def main():
 def run():
     parser = argparse.ArgumentParser()
     parser.add_argument("-l", "--loop", action="store_true", help="loop")
+    parser.add_argument("-v", "--verbosity", default=0, action="store_true", help="increase output verbosity")
     args = parser.parse_args()
 
     if args.loop:
-        loop_main()
+        loop_main(args)
     else:
-        main()
+        main(args)
 
 
 if __name__ == "__main__":

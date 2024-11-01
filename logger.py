@@ -1,9 +1,5 @@
 class Logger:
-    def __init__(self):
-        import argparse
-        parser = argparse.ArgumentParser()
-        parser.add_argument("-v", "--verbosity", default=0, action="store_true", help="increase output verbosity")
-        args = parser.parse_args() 
+    def __init__(self, args):
         if args.verbosity == True:
             self.debug = True
         else: self.debug = False
