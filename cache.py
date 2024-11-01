@@ -14,7 +14,7 @@ def main():
                 d.hostname, 
                 d.model, 
                 d.type, 
-                ds.signal_lockal_60g, 
+                ds.signal_local_60g, 
                 ds.signal_remote_60g, 
                 st.type 
                     FROM device d 
