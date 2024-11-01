@@ -11,12 +11,10 @@ def main():
     query = """
             SELECT
                 ds.updated_at, 
+                d.device_id
                 d.hostname, 
-                d.model, 
-                d.type, 
                 ds.signal_local_60g, 
                 ds.signal_remote_60g, 
-                st.type 
                     FROM device d 
                         JOIN device_statistics ds 
                         ON d.device_id = ds.device_id 
@@ -26,8 +24,10 @@ def main():
                                 """
 
     result = uisp_db.execute_query(query)
-    for r in result:
-        print(r)
+    for row in result:
+        print(row)
+        cache_db.insert_data(row)
+        
 
 
 if __name__ == "__main__":
