@@ -1,0 +1,8 @@
+[Unit]
+Description=Service to upload 60ghz stats to postgresql
+
+[Service]
+Type=simple
+User=youruserhere
+WorkingDirectory=/home/youruserhere/repos/uisp_signal_graphing
+ExecStart=/home/youruserhere/repos/uisp_signal_graphing/venv/bin/python3 /home/yournamehere/repos/uisp_signal_graphing/cache.py -l
